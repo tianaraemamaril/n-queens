@@ -82,7 +82,8 @@
       
       var count = 0;
       
-      this.attributes[rowIndex].forEach(function(item) {
+      
+      this.rows()[rowIndex].forEach(function(item) {
         
         if (item === 1) {
           count++;
@@ -102,11 +103,16 @@
       
       var conflict = false;
       
-      for (var i = 0; i < Object.keys(this.attributes).length - 1; i++) {
-        if (conflict === false) {
+      for(let i = 0; i < this.rows().length; i++) {
+        if(conflict === false) {
           conflict = this.hasRowConflictAt(i);
         }
       }
+      // for (var i = 0; i < Object.keys(this.attributes).length - 1; i++) {
+      //   if (conflict === false) {
+      //     conflict = this.hasRowConflictAt(i);
+      //   }
+      // }
       
       
       
