@@ -124,9 +124,9 @@
     // test if a specific column on this board contains a conflict
     hasColConflictAt: function(colIndex) {
       let count = 0;
-      for(let i = 0; i < this.rows().length -1; i++) {
+      for(let i = 0; i < this.rows().length; i++) {
         if(this.rows()[i][colIndex] === 1) {
-          count++
+          count++;
         }  
         if(count > 1) {
           return true;
@@ -147,19 +147,43 @@
       return conflict;
     },
 
-
-
     // Major Diagonals - go from top-left to bottom-right
     // --------------------------------------------------------------
     //
     // test if a specific major diagonal on this board contains a conflict
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
-      return false; // fixme
+      let count = 0;
+      for(let i = 0; i < this.rows().length; i++) {
+        
+        if(this.rows()[i][majorDiagonalColumnIndexAtFirstRow] === 1) {
+          count++;
+        }
+        
+        // increases DCI
+        majorDiagonalColumnIndexAtFirstRow++;
+        
+        if(count > 1) {
+          return true;
+        } 
+      }
+      return false;
+      
+       // fixme
     },
 
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
-      return false; // fixme
+      var conflict = false;
+      
+      for(let i = -(this.rows().length); i < this.rows().length; i++) {
+        
+        // if(this.hasMajorDiagonalColumnIndexAt(i) === 1) {
+        if(conflict === false) {
+          conflict = this.hasMajorDiagonalConflictAt(i);
+          // return true;
+        }
+      }
+      return conflict; // fixme
     },
 
 
@@ -169,6 +193,10 @@
     //
     // test if a specific minor diagonal on this board contains a conflict
     hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow) {
+      // count = 0;
+      // for(let i = 0; i < this.rows().length - minorDiagonalColumnIndexAtFirstRow; i++) {
+      //   if(this.rows()[i][minorDiagonalColumnIndexAtFirstRow] === 1)
+      // }
       return false; // fixme
     },
 
