@@ -15,10 +15,19 @@
 
 
 
-window.findNRooksSolution = function(n) {
-  var solution = undefined; //fixme
+window.findNRooksSolution = function(num) {
+  var solution = new Board({n: num}); //fixme
+  
+  for (let i = 0; i < solution.rows().length; i++) { // can probably use num instead of solution...length
+    for (let j = 0; j < solution.rows()[i].length; j++) {
+      let cell = solution.rows()[i][j];
+      if (!cell.hasAnyRowConflicts && !cell.hasAnyColConflicts) {
+        solution.rows().togglePiece(i,j);
+      }
+    }
+  }
 
-  console.log('Single solution for ' + n + ' rooks:', JSON.stringify(solution));
+  console.log('Single solution for ' + num + ' rooks:', JSON.stringify(solution));
   return solution;
 };
 
