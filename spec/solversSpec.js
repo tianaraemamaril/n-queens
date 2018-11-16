@@ -42,7 +42,7 @@ describe('solvers', function() {
         var numPieces = _.reduce(solutionBoard.rows(), function(memo, row) {
           return memo + _.reduce(row, function(memo, col) {
             return memo + col;
-          }, 0);
+          }, 0);  
         }, 0);
 
         expect(solutionBoard.get('n')).to.equal(n);
